@@ -1,2 +1,2 @@
 # spring-boot
-spring boot sample project with freemarker
+sample web project with freemarker

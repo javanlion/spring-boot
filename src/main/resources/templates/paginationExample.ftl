@@ -56,6 +56,7 @@
 <p>Date: ${time?date}</p>
 <p>Time: ${time?time}</p>
 <p>Message: ${message}</p>
+<p>Number of messages  <span class="label <#if showRows == "1">label-success<#else>label-danger</#if>">${showRows}</span></p>
 
     <pre id='content'>
     <#list map?keys as key>

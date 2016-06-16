@@ -1,4 +1,4 @@
-package controller;
+package sample.crypto;
 
 import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,7 +36,7 @@ public class CryptoController {
     public String welcome(Map<String, Object> model) {
         model.put("time", new Date());
         model.put("message", this.message);
-        return "welcome";
+        return "decrypt";
     }
 
     @RequestMapping("/encrypt")
@@ -52,6 +52,7 @@ public class CryptoController {
             byte[] bytes = Base64.encodeBase64(cipher.doFinal(encryptedKey.getBytes(UTF_8)));
 
             model.put("encryptedValue", new String(bytes));
+            model.put("decryptedValue", encryptedKey);
         }
 
         return "encrypt";
@@ -67,9 +68,10 @@ public class CryptoController {
             SecretKey secretKey = new SecretKeySpec(privateKey.getBytes(UTF_8), "Blowfish");
             Cipher cipher = Cipher.getInstance("Blowfish");
             cipher.init(Cipher.DECRYPT_MODE, secretKey);
-            byte[] bytes = Base64.decodeBase64(cipher.doFinal(encryptedKey.getBytes(UTF_8)));
+            byte[] bytes = cipher.doFinal(Base64.decodeBase64(encryptedKey.getBytes(UTF_8)));
 
             model.put("decryptedValue", new String(bytes));
+            model.put("encryptedValue", encryptedKey);
         }
 
         return "decrypt";

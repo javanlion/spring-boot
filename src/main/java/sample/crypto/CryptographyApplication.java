@@ -1,13 +1,13 @@
-package sample.freemarker;
+package sample.crypto;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SampleWebFreeMarkerApplication {
+public class CryptographyApplication {
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(SampleWebFreeMarkerApplication.class, args);
+        SpringApplication.run(CryptographyApplication.class, args);
     }
 
 }
